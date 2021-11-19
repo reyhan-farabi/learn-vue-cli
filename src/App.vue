@@ -7,6 +7,10 @@
   <h1>Welcome to Vue JS</h1>
 
   <button v-on:click="inputName">Click Here to Change Name</button>
+
+  <p>{{ randtext }}</p>
+
+  <input v-model="randtext" type="text" placeholder="just type here" />
 </template>
 
 <script>
@@ -17,6 +21,7 @@ export default {
       firstname: "Reyhan",
       lastname: "Farabi",
       gitlink: "https://github.com/reyhan-farabi/",
+      randtext: "Type anything here",
     };
   },
   methods: {
@@ -53,7 +58,7 @@ h3 {
 }
 
 button {
-  margin-top: 20px;
+  margin: 20px 0;
   padding: 10px 20px;
   cursor: pointer;
 }
@@ -61,5 +66,9 @@ button {
 a {
   text-decoration: none;
   color: #2c3e50;
+}
+
+input {
+  padding: 10px;
 }
 </style>
