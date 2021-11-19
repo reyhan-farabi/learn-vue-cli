@@ -1,19 +1,31 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <h3>Hello, Reyhan Farabi</h3>
+  <h3>Hello, {{ fullname }}</h3>
   <h1>Welcome to Vue JS</h1>
+
+  <button v-on:click="inputName">Click Here to Change Name</button>
 </template>
 
 <script>
 export default {
   name: "App",
-  components: {},
-  // data() {
-  //   return {
-  //     firstname: "Reyhan",
-  //     lastname: "Farabi",
-  //   };
-  // },
+  data() {
+    return {
+      firstname: "Reyhan",
+      lastname: "Farabi",
+    };
+  },
+  methods: {
+    inputName() {
+      this.firstname = prompt("Type your firstname");
+      this.lastname = prompt("Type your lastname");
+    },
+  },
+  computed: {
+    fullname() {
+      return `${this.firstname} ${this.lastname}`;
+    },
+  },
 };
 </script>
 
@@ -32,7 +44,13 @@ h1 {
 }
 
 h3 {
-  margin: 10px 0 0;
+  margin: 0;
   font-weight: 200;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 </style>
