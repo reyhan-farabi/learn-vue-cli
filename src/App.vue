@@ -1,6 +1,9 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <h3>Hello, {{ fullname }}</h3>
+  <h3>
+    Hello,
+    <a :href="gitlink">{{ fullname }} </a>
+  </h3>
   <h1>Welcome to Vue JS</h1>
 
   <button v-on:click="inputName">Click Here to Change Name</button>
@@ -13,6 +16,7 @@ export default {
     return {
       firstname: "Reyhan",
       lastname: "Farabi",
+      gitlink: "https://github.com/reyhan-farabi/",
     };
   },
   methods: {
@@ -52,5 +56,10 @@ button {
   margin-top: 20px;
   padding: 10px 20px;
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #2c3e50;
 }
 </style>
