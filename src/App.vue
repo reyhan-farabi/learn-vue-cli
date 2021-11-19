@@ -8,9 +8,23 @@
 
   <button v-on:click="inputName">Click Here to Change Name</button>
 
-  <p>{{ randtext }}</p>
+  <p class="todo-label">What you want todo now?</p>
 
-  <input v-model="randtext" type="text" placeholder="just type here" />
+  <form>
+    <input
+      v-model="randtext"
+      type="text"
+      placeholder="Just type here"
+      v-on:keyup.enter.prevent="addList"
+    />
+    <button v-on:click.prevent="addList">Add</button>
+  </form>
+
+  <ul>
+    <li v-for="(list, index) in todolist" :key="index">
+      {{ list }}
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -21,13 +35,18 @@ export default {
       firstname: "Reyhan",
       lastname: "Farabi",
       gitlink: "https://github.com/reyhan-farabi/",
-      randtext: "Type anything here",
+      randtext: "",
+      todolist: [],
     };
   },
   methods: {
     inputName() {
       this.firstname = prompt("Type your firstname");
       this.lastname = prompt("Type your lastname");
+    },
+    addList() {
+      this.todolist.push(this.randtext);
+      this.randtext = "";
     },
   },
   computed: {
@@ -70,5 +89,12 @@ a {
 
 input {
   padding: 10px;
+  margin: 0 10px;
+  border: 1px solid #2c3e50;
+  border-radius: 5px;
+}
+
+.todo-label {
+  margin: 30px 0 0;
 }
 </style>
