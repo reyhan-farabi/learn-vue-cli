@@ -20,11 +20,12 @@
     <button v-on:click.prevent="addList">Add</button>
   </form>
 
-  <ul>
-    <li v-for="(list, index) in todolist" :key="index">
-      {{ list }}
-    </li>
-  </ul>
+  <div v-if="todolist.length != 0">
+    <p v-for="(list, index) in todolist" :key="index">
+      {{ index + 1 }}) {{ list }} - <span>delete</span>
+    </p>
+  </div>
+  <p v-else>Anda tidak memiliki todolist untuk hari ini</p>
 </template>
 
 <script>
@@ -89,12 +90,17 @@ a {
 
 input {
   padding: 10px;
-  margin: 0 10px;
+  margin-right: 10px;
   border: 1px solid #2c3e50;
   border-radius: 5px;
 }
 
 .todo-label {
   margin: 30px 0 0;
+}
+
+span {
+  color: red;
+  font-size: 12px;
 }
 </style>
