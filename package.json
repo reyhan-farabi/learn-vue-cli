@@ -42,5 +42,17 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/reyhan-farabi/learn-vue-cli.git"
+  },
+  "author": "M. Reyhan Farabi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reyhan-farabi/learn-vue-cli/issues"
+  },
+  "homepage": "https://github.com/reyhan-farabi/learn-vue-cli#readme"
 }
