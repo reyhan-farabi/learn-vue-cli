@@ -20,7 +20,8 @@
 
   <div v-if="todolist.length != 0">
     <p v-for="(list, index) in todolist" :key="index">
-      {{ index + 1 }}) {{ list }} - <span>delete</span>
+      {{ index + 1 }}) {{ list }} -
+      <a id="deleteBtn" v-on:click="removeList(index)">delete</a>
     </p>
   </div>
   <p v-else>Anda tidak memiliki todolist untuk hari ini</p>
@@ -49,6 +50,13 @@ export default {
         this.todolist.push(this.randtext);
         this.randtext = "";
       }
+    },
+    removeList(index) {
+      this.todolist = this.todolist.filter(
+        (item) => item != this.todolist[index]
+      );
+      console.log("Remove Logged");
+      console.log(this.todolist);
     },
   },
   computed: {
@@ -107,8 +115,9 @@ input {
   margin: 30px 0 0;
 }
 
-span {
+#deleteBtn {
   color: red;
-  font-size: 12px;
+  font-size: 14px;
+  cursor: pointer;
 }
 </style>
