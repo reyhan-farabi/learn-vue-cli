@@ -1,8 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <h3>
-    Hello,
-    <a :href="gitlink">{{ fullname }} </a>
+    Hello<a :href="gitlink">{{ fullname }} </a>
   </h3>
   <h1>Welcome to Vue JS</h1>
 
@@ -14,8 +13,7 @@
     <input
       v-model="randtext"
       type="text"
-      placeholder="Just type here"
-      v-on:keyup.enter.prevent="addList"
+      v-bind:placeholder="inputplaceholder"
     />
     <button v-on:click.prevent="addList">Add</button>
   </form>
@@ -37,6 +35,7 @@ export default {
       lastname: "Farabi",
       gitlink: "https://github.com/reyhan-farabi/",
       randtext: "",
+      inputplaceholder: "Type Something Here",
       todolist: [],
     };
   },
@@ -46,13 +45,22 @@ export default {
       this.lastname = prompt("Type your lastname");
     },
     addList() {
-      this.todolist.push(this.randtext);
-      this.randtext = "";
+      if (this.randtext != "") {
+        this.todolist.push(this.randtext);
+        this.randtext = "";
+      }
     },
   },
   computed: {
     fullname() {
-      return `${this.firstname} ${this.lastname}`;
+      if (!this.firstname && !this.lastname) {
+        if (!this.firstname) {
+          return `, ${this.lastname}`;
+        } else if (!this.lastname) {
+          return `, ${this.firstname}`;
+        }
+      }
+      return `, ${this.firstname} ${this.lastname}`;
     },
   },
 };
