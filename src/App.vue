@@ -19,10 +19,12 @@
   </form>
 
   <div v-if="todolist.length != 0">
-    <p v-for="(list, index) in todolist" :key="index">
-      {{ index + 1 }}) {{ list }} -
-      <a id="deleteBtn" v-on:click="removeList(index)">delete</a>
-    </p>
+    <span id="listItem" v-for="(list, index) in todolist" :key="index">
+      <p>{{ index + 1 }}) {{ list }} -</p>
+      <a v-on:click="removeList(index)">
+        <img src="https://img.icons8.com/color/48/000000/delete-forever.png" />
+      </a>
+    </span>
   </div>
   <p v-else>Anda tidak memiliki todolist untuk hari ini</p>
 </template>
@@ -84,6 +86,18 @@ export default {
   margin-top: 60px;
 }
 
+#listItem {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#listItem a img {
+  max-width: 32px;
+  cursor: pointer;
+}
+
 h1 {
   margin: 0;
 }
@@ -113,11 +127,5 @@ input {
 
 .todo-label {
   margin: 30px 0 0;
-}
-
-#deleteBtn {
-  color: red;
-  font-size: 14px;
-  cursor: pointer;
 }
 </style>
