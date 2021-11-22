@@ -18,13 +18,13 @@
     <button v-on:click.prevent="addList">Add</button>
   </form>
 
-  <div v-if="todolist.length != 0">
-    <span id="listItem" v-for="(list, index) in todolist" :key="index">
-      <p>{{ index + 1 }}) {{ list }} -</p>
+  <div id="listSection" v-if="todolist.length != 0">
+    <div id="listItem" v-for="(list, index) in todolist" :key="index">
+      <p>{{ index + 1 }}) {{ list }}</p>
       <a v-on:click="removeList(index)">
-        <img src="https://img.icons8.com/color/48/000000/delete-forever.png" />
+        <img src="./assets/bin(red).png" />
       </a>
-    </span>
+    </div>
   </div>
   <p v-else>Anda tidak memiliki todolist untuk hari ini</p>
 </template>
@@ -87,15 +87,26 @@ export default {
 }
 
 #listItem {
-  margin: 0 auto;
+  margin: 1rem auto;
+  padding: 0.8rem 1rem;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 512px;
+  background-color: white;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px -2px rgba(0, 0, 0, 0.15);
 }
 
 #listItem a img {
-  max-width: 32px;
+  max-width: 28px;
+  margin: 0 10px;
   cursor: pointer;
+}
+
+#listSection {
+  margin: 1rem 0;
 }
 
 h1 {
